@@ -1,0 +1,16 @@
+---
+title: "pstat 126 project"
+format: pdf
+editor: visual
+---
+
+## PSTAT 126 project
+
+```{r}
+data <- read.csv("Diamonds Prices2022.csv")
+
+set.seed(123)   
+sample_data <- data[sample(nrow(data), 1000), ]
+
+write.csv(sample_data, "diamonds_sample1000.csv", row.names = FALSE)
+```
