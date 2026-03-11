@@ -10,9 +10,9 @@ editor: visual
 data <- read.csv("Diamonds Prices2022.csv")
 
 set.seed(123)   
-sample_data <- data[sample(nrow(data), 1000), ]
+sample_data <- data[sample(nrow(data), 2000), ]
 
-write.csv(sample_data, "diamonds_sample1000.csv", row.names = FALSE)
+write.csv(sample_data, "diamonds_sample2000.csv", row.names = FALSE)
 ```
 
 #testing
