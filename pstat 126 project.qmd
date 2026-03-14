@@ -4,15 +4,114 @@ format: pdf
 editor: visual
 ---
 
-## PSTAT 126 project
+## PSTAT 126 Final Project
+
+Sruthi Gopanapalli (3468956) and Harika Madiraju (3569092)
+
+**Part 1: Data Description and Descriptive Statistics**
 
 ```{r}
 data <- read.csv("Diamonds Prices2022.csv")
 
 set.seed(123)   
-sample_data <- data[sample(nrow(data), 2000), ]
+#sample_data <- data[sample(nrow(data), 2000), ] 
+#code from lecture 16 was:
+diamonds <- data[,-c(1)]
 
-write.csv(sample_data, "diamonds_sample2000.csv", row.names = FALSE)
+
+
 ```
 
-#testing
+```{r}
+#histograms for continuous variables
+hist(diamonds$carat,
+main="Histogram of Carat",
+xlab="Carat",
+col="lightblue",
+breaks=30)
+
+hist(diamonds$depth,
+main="Histogram of Depth",
+xlab="Depth",
+col="lightgreen",
+breaks=30)
+
+hist(diamonds$table,
+main="Histogram of Table",
+xlab="Table",
+col="lightpink",
+breaks=30)
+
+hist(diamonds$price,
+main="Histogram of Price",
+xlab="Price ($)",
+col="lightyellow",
+breaks=30)
+
+hist(diamonds$x,
+main="Histogram of Length (x)",
+xlab="Length (mm)",
+col="lightgray",
+breaks=30)
+
+hist(diamonds$y,
+main="Histogram of Width (y)",
+xlab="Width (mm)",
+col="lightcoral",
+breaks=30)
+
+hist(diamonds$z,
+main="Histogram of Depth (z)",
+xlab="Depth (mm)",
+col="lightcyan",
+breaks=30)
+
+#barplots for categorical random variables
+barplot(table(diamonds$cut),
+       main = "Bar Plot of Diamond Cut",
+       xlab = "Cut",
+       ylab = "Frequency",
+       col = "lightblue")
+
+barplot(table(diamonds$color),
+       main = "Bar Plot of Diamond Color",
+       xlab = "Color",
+       ylab = "Frequency",
+       col = "lightgreen")
+
+barplot(table(diamonds$clarity),
+       main = "Bar Plot of Diamond Clarity",
+       xlab = "Clarity",
+       ylab = "Frequency",
+       col = "lightpink")
+
+```
+
+(Comment a sentence on distributions for each of the variables)
+
+```{r}
+cor(diamonds[, c("carat","depth","table","price","x","y","z")])
+
+#pairs(diamonds[, c("carat","depth","table","price","x","y","z")])
+
+#plot(diamonds$carat, diamonds$price,
+#main = "Scatterplot of Carat vs Price",
+#xlab = "Carat",
+#ylab = "Price",
+#col = "blue",
+#pch = 16)
+
+```
+
+```{r}
+#model <- lm(price ~ carat, Diamonds)
+model <- lm(price ~ carat + cut + color + clarity + depth + table + x + y + z,
+data = diamonds)
+
+summary(model)
+plot(model)
+```
+
+**Part 2: Simple Linear Regression**
+
+**Part 3: Simple Linear Regression continued**
